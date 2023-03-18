@@ -1,4 +1,7 @@
 // clang 02-nsobject.m -framework Foundation -o /tmp/a && /tmp/a
-// echo $?
 #import <Foundation/Foundation.h>
-int main() { return [NSObject class] == nil; }
+int main() {
+  if ([[NSObject class] respondsToSelector:@selector(autorelease)]) {
+    NSLog(@"Yes, NSObject has the method autorelease");
+  }
+}
